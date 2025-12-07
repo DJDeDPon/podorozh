@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Маршрути та Карта</title>
+    <link rel="stylesheet" href="style/style.css">
+    <style>
+        body {
+            background: url("images/bg-routes.jpg") no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        .content-box {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px auto;
+            max-width: 900px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 450px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border: 3px solid white;
+        }
+
+        .route-buttons button {
+            background-color: #ffdd57;
+            border: none;
+            padding: 10px 18px;
+            font-size: 16px;
+            margin: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .route-buttons button:hover {
+            background-color: #ffe88c;
+        }
+    </style>
+</head>
+<body>
+
+<div class="content-box">
+    <h1>Маршрути та карта подорожі</h1>
+
+    <p>
+        Під час поїздки я відкрила для себе одразу кілька дивовижних міст — Братиславу, Прагу та Відень. 
+        Кожне з них має власний характер, ритм та атмосферу.  
+        Щоб допомогти іншим туристам краще зорієнтуватися, я створила інтерактивну карту та описала маршрути, 
+        які мені найбільше сподобалися.
+    </p>
+
+    <p>
+        Ви можете натиснути кнопку під картою, щоб побачити конкретний маршрут, або збільшувати карту,
+        переміщатися по ній та обирати місця, які хочете відвідати.
+    </p>
+
+    <!-- Google Карта -->
+    <div class="map-container">
+        <iframe 
+            id="mapFrame"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d81148.67141652428!2d17.0419!3d48.1486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476c89364f9436f9%3A0x400f81c823ec620!2z0JHQuNCx0LDQvdC40Y8!5e0!3m2!1suk!2sua!4v1700000000000"
+            width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy">
+        </iframe>
+    </div>
+
+    <!-- Кнопки маршрутів -->
+    <div class="route-buttons" style="text-align:center;">
+
+        <button onclick="showRoute('bratislava')">
+            Маршрут у Братиславі
+        </button>
+
+        <button onclick="showRoute('vienna')">
+            Маршрут у Відні
+        </button>
+
+        <button onclick="showRoute('prague')">
+            Маршрут у Празі
+        </button>
+
+    </div>
+
+    <h2>ТОП-маршрути моєї подорожі</h2>
+
+    <p>
+        <b>1. Братислава — старе місто і замок</b><br>
+        Почала я свою подорож зі Старого міста: вузькі провулки, кольорові будиночки, атмосфера затишку. 
+        Далі — підйом на Братиславський Град, звідки відкривається вид на Дунай та червоні дахи міста.
+    </p>
+
+    <p>
+        <b>2. Відень — імператорський маршрут</b><br>
+        Я пройшлась через вулицю Рінґштрасе, потрапила до Оперного театру, собору Святого Стефана, а завершила прогулянку 
+        в саду Шёнбрунну. Маршрут дуже гармонійний і повністю передає дух старої Європи.
+    </p>
+
+    <p>
+        <b>3. Прага — місто тисячі веж</b><br>
+        Карлів міст, Празький град, астрономічний годинник — кожен елемент цього міста немов частина казки. 
+        Це місто здається намальованим вручну. 
+    </p>
+
+</div>
+
+<script>
+    function showRoute(city) {
+        let url = "";
+
+        if (city === "bratislava") {
+            url = "https://www.google.com/maps/dir//Bratislava+Castle/";
+        }
+        if (city === "vienna") {
+            url = "https://www.google.com/maps/dir//Schonbrunn+Palace+Vienna/";
+        }
+        if (city === "prague") {
+            url = "https://www.google.com/maps/dir//Charles+Bridge+Prague/";
+        }
+
+        document.getElementById("mapFrame").src = url;
+    }
+</script>
+
+</body>
+</html>
